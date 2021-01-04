@@ -2,6 +2,9 @@ import numpy as np
 from pandas import DataFrame as pdData
 import math
 
+import warnings
+warnings.filterwarnings("ignore", category=RuntimeWarning) 
+
 SIZE_MATRIX_X = 3
 SIZE_MATRIX_Y = 2
 
@@ -51,9 +54,9 @@ def rapportmin(a, b, m):
 
     return index_smallest_pos(out)
 
-def rapportmin_II(a, b):
-    out = np.divide(np.squeeze(a), b[np.newaxis])
-    return index_smallest_pos(out)
+# def rapportmin_II(a, b):
+#     out = np.divide(np.squeeze(a), b[np.newaxis])
+#     return index_smallest_pos(out)
 
 def resolution(tab, A, c):
     opt, tab_b, tab_c, tab_A = init(tab, A)
@@ -75,6 +78,7 @@ def resolution(tab, A, c):
             exit(1)
         else:
             A_s = tab[:A.shape[0],index_min]
+
             index_pivot = rapportmin(tab_b, A_s, m)
 
             ligne_pivot = tab[index_pivot]
@@ -118,4 +122,5 @@ if __name__ == '__main__':
     print(data_frame1)
 
     x, y = resolution(tab_initail1, A, c)
-    print('Optimal value:', y,"\n")
+    print('\nOptimal value:\t', y)
+    print('X:\t', x,)
