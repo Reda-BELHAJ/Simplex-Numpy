@@ -2,9 +2,6 @@ import numpy as np
 from pandas import DataFrame as pdData
 import math
 
-import warnings
-warnings.filterwarnings("ignore", category=RuntimeWarning) 
-
 SIZE_MATRIX_X = 3
 SIZE_MATRIX_Y = 2
 
@@ -48,11 +45,19 @@ def index_smallest_pos(v):
     return np.where(v > 0, v, np.inf).argmin()
 
 def rapportmin(a, b, m):
-    out = np.fromiter(
-        map(lambda i:a[i]/b[i] , range(0, m-1))
-        , dtype=np.float)
+    out = []
+    for i in range(0, m-1):
+        if b[i] != 0:
+            out.append(a[i] / b[i])
+            
+    return index_smallest_pos(np.array(out))
 
-    return index_smallest_pos(out)
+# def rapportmin_I(a, b, m):
+#     out = np.fromiter(
+#         map(lambda i:a[i]/b[i] , range(0, m-1))
+#         , dtype=np.float)
+
+#     return index_smallest_pos(out)
 
 # def rapportmin_II(a, b):
 #     out = np.divide(np.squeeze(a), b[np.newaxis])
