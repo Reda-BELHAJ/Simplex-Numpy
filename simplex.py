@@ -110,9 +110,9 @@ if __name__ == '__main__':
 
     (c, A, b) = map(lambda t: np.array(t), [c, A, b])
 
-    # A = np.random.randint(0, 25,size = (SIZE_MATRIX_X, SIZE_MATRIX_Y))
-    # b = np.random.randint(0, 25,size = SIZE_MATRIX_X)
-    # c = np.random.randint(0, 25,size = (1, SIZE_MATRIX_Y))
+    # A = np.random.randint(-25, 25,size = (SIZE_MATRIX_X, SIZE_MATRIX_Y))
+    # b = np.random.randint(-25, 25,size = SIZE_MATRIX_X)
+    # c = np.random.randint(-25, 25,size = (1, SIZE_MATRIX_Y))
 
     range_tab1, tab_initail1 = generate_tabinitial_withID(A, b, c)
 
