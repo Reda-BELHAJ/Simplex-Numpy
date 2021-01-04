@@ -52,6 +52,8 @@ def rapportmin(a, b, m):
             
     return index_smallest_pos(np.array(out))
 
+# Both of the function below generates a RunTimeWarning: Divide by 0
+
 # def rapportmin_I(a, b, m):
 #     out = np.fromiter(
 #         map(lambda i:a[i]/b[i] , range(0, m-1))
@@ -114,6 +116,8 @@ if __name__ == '__main__':
     b = [20, 18, 8]
 
     (c, A, b) = map(lambda t: np.array(t), [c, A, b])
+    
+    # Generates random problems to test the code 
 
     # A = np.random.randint(-25, 25,size = (SIZE_MATRIX_X, SIZE_MATRIX_Y))
     # b = np.random.randint(-25, 25,size = SIZE_MATRIX_X)
@@ -127,5 +131,5 @@ if __name__ == '__main__':
     print(data_frame1)
 
     x, y = resolution(tab_initail1, A, c)
-    print('\nOptimal value:\t', y)
+    print('\nSolution Optimale:\t', y)
     print('X:\t', x,)
