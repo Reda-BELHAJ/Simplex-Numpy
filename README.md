@@ -4,11 +4,11 @@ Simplex Algorithm is a popular algorithm for linear programming... [link to Wiki
 
 
 The example in [Simplex.py](https://github.com/Reda-BELHAJ/Simplex_Numpy/blob/main/simplex.py) is :
-
+```
         [ 0 2 1 ]      
     A = [ 0 1 1 ]   b = [ 20 18 8 ]  c = [ 1 -7 -4 ]
         [ 0 1 0 ]   
-        
+```        
 And i already test some random inputs with the use of random function in numpy:
 ```
     A = np.random.randint(-25, 25,size = (SIZE_MATRIX_X, SIZE_MATRIX_Y))
