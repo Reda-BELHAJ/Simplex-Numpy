@@ -9,7 +9,7 @@ The example in [Simplex.py](https://github.com/Reda-BELHAJ/Simplex_Numpy/blob/ma
     A = [ 0 1 1 ]   b = [ 20 18 8 ]  c = [ 1 -7 -4 ]
         [ 0 1 0 ]   
 ```        
-And i already test some random inputs with the use of random function in numpy:
+And I already test some random inputs with the use of random function in Numpy:
 ```
     A = np.random.randint(-25, 25,size = (SIZE_MATRIX_X, SIZE_MATRIX_Y))
     b = np.random.randint(-25, 25,size = SIZE_MATRIX_X)
