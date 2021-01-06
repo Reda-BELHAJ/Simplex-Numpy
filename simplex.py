@@ -19,9 +19,9 @@ def generate_tabinitial(A, b, c):
     return range(n, n + m), result
 
 def generate_tabinitial_withID(A, b, c):
-    m, n = A.shape
-    rng, tabinitial = generate_tabinitial(A, b, c)
-    identity = np.vstack((np.identity(m), np.zeros(m)))
+    m, n                = A.shape
+    rng, tabinitial     = generate_tabinitial(A, b, c)
+    identity            = np.vstack((np.identity(m), np.zeros(m)))
     return rng, np.concatenate((tabinitial, identity), axis=1)
 
 def positive(v):
@@ -29,14 +29,14 @@ def positive(v):
 
 
 def init(tab, A):
-    m, n = A.shape
+    m, n    = A.shape
 
-    opt = -tab[m, n]
-    tab_b = tab[:m, n]
-    tab_c = np.concatenate((tab[m , 0:n]
+    opt         = -tab[m, n]
+    tab_b       = tab[:m, n]
+    tab_c       = np.concatenate((tab[m , 0:n]
          ,tab[m , n + 1:]))
 
-    tab_A = np.hstack((tab[0:m ,0:n ]
+    tab_A       = np.hstack((tab[0:m ,0:n ]
         ,tab[ 0:m , n + 1 :]))
 
     return opt, tab_b, tab_c, tab_A
@@ -66,9 +66,9 @@ def rapportmin(a, b, m):
 #     return index_smallest_pos(out)
 
 def resolution(tab, A, c):
-    opt, tab_b, tab_c, tab_A = init(tab, A)
-    m, n = tab.shape
-    sign, minimum, index_min = positive(tab_c)
+    opt, tab_b, tab_c, tab_A    = init(tab, A)
+    m, n                        = tab.shape
+    sign, minimum, index_min    = positive(tab_c)
     
     if (index_min[0] > c.size).all():
         index_min = list(index_min)
@@ -84,16 +84,16 @@ def resolution(tab, A, c):
             print("La fonction objective n'est pas bornee.")
             exit(1)
         else:
-            A_s = tab[:A.shape[0],index_min]
+            A_s                 = tab[:A.shape[0],index_min]
 
-            index_pivot = rapportmin(tab_b, A_s, m)
+            index_pivot         = rapportmin(tab_b, A_s, m)
 
-            ligne_pivot = tab[index_pivot]
-            colonne_pivot = tab[:,index_min]
+            ligne_pivot         = tab[index_pivot]
+            colonne_pivot       = tab[:,index_min]
 
-            pivot = tab[index_pivot,index_min]
+            pivot               = tab[index_pivot,index_min]
             
-            tab[index_pivot] = ligne_pivot / float(pivot)
+            tab[index_pivot]    = ligne_pivot / float(pivot)
             
             for i in range(0, len(tab)):
                 if not np.array_equal(tab[i], tab[index_pivot]):
@@ -109,13 +109,13 @@ if __name__ == '__main__':
     c = [[1, -7, -4]]
     
     A = [
-        [0, 2, 1],
-        [0, 1, 1],
-        [0, 1, 0]
-    ]
+                [0, 2, 1],
+                [0, 1, 1],
+                [0, 1, 0]
+        ]
     b = [20, 18, 8]
 
-    (c, A, b) = map(lambda t: np.array(t), [c, A, b])
+    (c, A, b)   = map(lambda t: np.array(t), [c, A, b])
     
     # Generates random problems to test the code 
 
@@ -123,13 +123,13 @@ if __name__ == '__main__':
     # b = np.random.randint(-25, 25,size = SIZE_MATRIX_X)
     # c = np.random.randint(-25, 25,size = (1, SIZE_MATRIX_Y))
 
-    range_tab1, tab_initail1 = generate_tabinitial_withID(A, b, c)
+    range_tab1, tab_initail1    = generate_tabinitial_withID(A, b, c)
 
-    data_frame1 = pdData(tab_initail1)
+    data_frame1                 = pdData(tab_initail1)
 
     print("\tLe tableau initiale est:")
     print(data_frame1)
 
-    x, y = resolution(tab_initail1, A, c)
+    x, y                        = resolution(tab_initail1, A, c)
     print('\nSolution Optimale:\t', y)
     print('X:\t', x,)
