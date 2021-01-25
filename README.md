@@ -6,7 +6,7 @@ Simplex Algorithm is a popular algorithm for linear programming... [link to Wiki
   <img src="https://github.com/Reda-BELHAJ/Simplex_Numpy/blob/main/Simplex_METH.PNG">
 </p>
 
-The example in [Simplex.py](https://github.com/Reda-BELHAJ/Simplex_Numpy/blob/main/simplex.py) is :
+The example in [Simplex.py](https://github.com/Reda-BELHAJ/Simplex_Numpy/blob/main/Simplex.py) is :
 ```
         [ 0 2 1 ]      
     A = [ 0 1 1 ]   b = [ 20 18 8 ]  c = [ 1 -7 -4 ]
