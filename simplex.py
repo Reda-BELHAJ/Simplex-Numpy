@@ -131,5 +131,6 @@ if __name__ == '__main__':
     print(data_frame1)
 
     x, y                        = resolution(tab_initail1, A, c)
+    
     print('\nSolution Optimale:\t', y)
     print('X:\t', x,)
