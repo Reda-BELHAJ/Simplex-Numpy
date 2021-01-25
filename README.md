@@ -3,7 +3,7 @@
 Simplex Algorithm is a popular algorithm for linear programming... [link to Wikipedia!](https://en.wikipedia.org/wiki/Simplex_algorithm) :grinning:
 
 <p align="center">
-  <img src="(https://github.com/Reda-BELHAJ/Simplex_Numpy/blob/main/Simplex_METH.PNG">
+  <img src="https://github.com/Reda-BELHAJ/Simplex_Numpy/blob/main/Simplex_METH.PNG">
 </p>
 
 The example in [Simplex.py](https://github.com/Reda-BELHAJ/Simplex_Numpy/blob/main/simplex.py) is :
