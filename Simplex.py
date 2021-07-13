@@ -2,16 +2,16 @@ import numpy as np
 from pandas import DataFrame as pdData
 import math
 
-SIZE_MATRIX_X = 3
-SIZE_MATRIX_Y = 2
+SIZE_MATRIX_X = 1
+SIZE_MATRIX_Y = 6
 
 def generate_tabinitial(A, b, c):
     [m, n] = A.shape
     if m != b.size:
-        print('La taille du \'b\' doit etre egal a la ligne de \'A\' .')
+        print()
         exit(1)
     if n != c.size:
-        print('La taille du \'c\' doit etre egal a la colonne de \'A\'.')
+        print()
         exit(1)
     
     result = np.column_stack((A, b))
@@ -52,19 +52,6 @@ def rapportmin(a, b, m):
             
     return index_smallest_pos(np.array(out))
 
-# Both of the function below generates a RunTimeWarning: Divide by 0
-
-# def rapportmin_I(a, b, m):
-#     out = np.fromiter(
-#         map(lambda i:a[i]/b[i] , range(0, m-1))
-#         , dtype=np.float)
-
-#     return index_smallest_pos(out)
-
-# def rapportmin_II(a, b):
-#     out = np.divide(np.squeeze(a), b[np.newaxis])
-#     return index_smallest_pos(out)
-
 def resolution(tab, A, c):
     opt, tab_b, tab_c, tab_A    = init(tab, A)
     m, n                        = tab.shape
@@ -81,7 +68,7 @@ def resolution(tab, A, c):
         return tab_b, opt
     else:
         if all(tab[:,index_min] <= 0):
-            print("La fonction objective n'est pas bornee.")
+            print()
             exit(1)
         else:
             A_s                 = tab[:A.shape[0],index_min]
@@ -106,31 +93,24 @@ def resolution(tab, A, c):
 
 if __name__ == '__main__':
 
-    c = [[1, -7, -4]]
+    c = [[-3,-4,0,0,1]]
     
     A = [
-                [0, 2, 1],
-                [0, 1, 1],
-                [0, 1, 0]
+                [1,1,1,0,0],
+                [2,1,0,1,0]
         ]
-    b = [20, 18, 8]
+    b = [4,5]
 
     (c, A, b)   = map(lambda t: np.array(t), [c, A, b])
     
-    # Generates random problems to test the code 
-
-    # A = np.random.randint(-25, 25,size = (SIZE_MATRIX_X, SIZE_MATRIX_Y))
-    # b = np.random.randint(-25, 25,size = SIZE_MATRIX_X)
-    # c = np.random.randint(-25, 25,size = (1, SIZE_MATRIX_Y))
-
     range_tab1, tab_initail1    = generate_tabinitial_withID(A, b, c)
 
     data_frame1                 = pdData(tab_initail1)
 
-    print("\tLe tableau initiale est:")
+    print()
     print(data_frame1)
 
     x, y                        = resolution(tab_initail1, A, c)
     
-    print('\nSolution Optimale:\t', y)
-    print('X:\t', x,)
+    print('Optimal Solution', abs(y))
+    print('X', x,)
